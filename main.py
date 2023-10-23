@@ -3,7 +3,6 @@ from discord.ui import Button, View # for buttons
 from discord.ext import commands # for bot commands
 import asyncio # for sleep
 import os # for file handling
-import errno # for error handling
 from dotenv import load_dotenv # for loading environment variables
 
 load_dotenv() # load environment variables from .env file
