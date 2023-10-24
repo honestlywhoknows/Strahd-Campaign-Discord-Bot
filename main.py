@@ -5,6 +5,7 @@ import asyncio # for sleep
 import os # for file handling
 from dotenv import load_dotenv # for loading environment variables
 from help import HelpCommand # for help command
+from errors import handle_error # for error handling
 
 load_dotenv() # load environment variables from .env file
 
@@ -17,7 +18,7 @@ ADAM_ID = os.getenv('ADAM_ID')
 
 # !!! IMPORTANT !!!
 # test vs prod switch
-test = False # set to True to run in test mode
+test = True # set to True to run in test mode
 
 # create intents
 intents = discord.Intents.default()
@@ -63,20 +64,15 @@ async def print_test_info():
 # validation
 async def validate():
     if not DISCORD_TOKEN: # if discord token is not set
-        print('Discord token not set.')
-        exit()
+        raise Exception('Discord token not set.')
     if not DISCORD_GUILD: # if discord guild is not set
-        print('Discord guild not set.')
-        exit()
+        raise Exception('Discord guild not set.')
     if not guild: # if guild does not exist
-        print('Guild not found.')
-        exit()
+        raise Exception('Guild not found.')
     if not botChannel: # if bot-commands channel does not exist
-        print('#bot-commands channel not found.')
-        exit()
+        raise Exception('bot-commands channel not found.')
     if not inGameMemesChannel: # if in-game-memes channel does not exist
-        print('#in-game-memes channel not found.')
-        exit()
+        raise Exception('in-game-memes channel not found.')
 
 # background task to resend mute button if it is not visible on screen (aka if it is not within the last 20 messages)
 async def background_button_check():
