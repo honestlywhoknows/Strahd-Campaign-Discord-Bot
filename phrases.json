@@ -1,0 +1,60 @@
+{
+    "confession_box_phrases": [
+        "A whisper reaches my ear from the shadows of Barovia. It seems someone has a guilty conscience.", 
+        "Who might this be, daring to whisper into the Count's ear? Someone has a confession to make.", 
+        "A voiceless murmur rises from the land. A mysterious voice bearing this message:",
+        "The darkness and mists hide many secrets. One such has just been revealed before me:",
+        "This one thought to hide thier sins from me. But I see and know all. This is their confession:",
+        "A murmur carried on the wind, a soul bearing their secrets:",
+        "A raven has dropped a tear-streaked note upon my balcony. A heart yearns for release, confessing its deepest secrets:",
+        "From the darkest corners of Barovia, a wandering soul seeks redemption. This is their burden, laid bare:",
+        "In the hushed silence, an admission finds its way to me. The raw truths of Barovia's denizens, unveiled as:",
+        "A secretive whisper from the land, penned with trembling hands. The depths of sorrow and regret, revealed in this confession:"
+    ],
+    "empty_confession_responses": [
+        "Empty words hold no weight in my domain. Confess, or remain silent forever. Begin with !confession.",
+        "The shadows may hide you, but your silence will not. Speak again using !confession.",
+        "Your reticence is noted. But I demand words, not whispers. Confess using !confession.",
+        "My time is not to be wasted. If you are bold enough to bear your soul, do so beginning with !confession."
+    ],
+    "suggestion_phrases": [
+        "I have received a most important raven, sent anonymously. It seems the people of Barovia are on the verge of revolt if this is not addressed:",
+        "It seems the people of Barovia are unhappy with my rule. I have received a raven with a suggestion to improve their lives. No name was given. It reads:",
+        "I have just awoken from my slumber to find a note on my desk, left anonymously. It reads:",
+        "I have only just stepped outside to find that some cowardly fellow has left an anonymous note on my castle doorstep. It reads:",
+        "From the mists, a concealed message finds its way to my castle. Someone dares to advise the ruler of Barovia with these words:",
+        "An unsigned parchment, delivered by the night's breeze. Barovia's inhabitants grow bold, inscribing their 'suggestions' as such:",
+        "Who is this that hides behind anonymity, yet seeks my ear? A message from the heart of Barovia, seeking to guide my hand:",
+        "Under cover of darkness, a secret message reaches my chamber. The people have gone to great lengths to ensure this unsigned demand reaches my hands:",
+        "An unsigned letter, scrawled with hasty script. Sealed with wax, it bears a message from the commonfolk:",
+        "Someone seeks to counsel the Count from the shadows. They have sent me this unsigned demand:"
+    ],
+    "empty_suggestion_responses": [
+        "It is perhaps wise to keep your counsel to yourself. If you should wish to speak up, begin again with !suggestion.",
+        "I am not in the habit of taking advice from the shadows. If you wish to speak, do so with !suggestion.",
+        "You dare to waste my time with empty words? If you have a suggestion, speak it with !suggestion.",
+        "Are you going to speak, or have you lost your nerve? If you have something to say, speak it with !suggestion."
+    ],
+    "nat_1_phrases": [
+        "The darkness of Barovia claims another victim. Pity.",
+        "Is that a natural 1? Come now, do not insult me with your incompetence.",
+        "Are all adventurers this incompetent? A natural 1 is inexcusable.",
+        "Ah, a critical failure, as expected. You are not the first to fall, and you will not be the last.",
+        "You stumble in the face of destiny. How... expected."
+    ],
+    "nat_20_phrases": [
+        "Careful, you may find yourself under the Count's watchful eye with such a roll.",
+        "I shall have my eye on you, adventurer.",
+        "You have caught my attention. Do not disappoint me.",
+        "Guards, ensure that this one here is not cheating. Such a roll must be verified.",
+        "A natural 20? I shall be watching you closely, adventurer."
+    ],
+    "deez_responses": [
+        "Ah, seeking humor in the depths of Barovia? Deez crypts hold many secrets.",
+        "You jest with such trivialities in my domain? Deez mists will be your doom.",
+        "You dare to mock in the face of the Lord of Barovia? Deez walls will be stained with your blood.",
+        "Seeking amusement, are you? Deez hands will be the last you see.",
+        "You think such jests will save you? Deez nights in Barovia are long and unforgiving.",
+        "Your mother."
+    ]
+  }

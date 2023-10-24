@@ -6,8 +6,13 @@ import os # for file handling
 from dotenv import load_dotenv # for loading environment variables
 from help import HelpCommand # for help command
 from errors import handle_error # for error handling
+from on_message_actions import MessageActions # for on message actions
+import json # for json handling
+import random # for random choice
 
 load_dotenv() # load environment variables from .env file
+with open("phrases.json", "r") as f: # load phrases from phrases.json
+    phrases = json.load(f)
 
 # get environment variables
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
@@ -18,7 +23,7 @@ ADAM_ID = os.getenv('ADAM_ID')
 
 # !!! IMPORTANT !!!
 # test vs prod switch
-test = False # set to True to run in test mode
+test = True # set to True to run in test mode
 
 # create intents
 intents = discord.Intents.default()
@@ -121,6 +126,24 @@ async def mute_callback(interaction): # mute callback
 async def resend_mute_button(ctx):
     await botChannel.send('Why are you manually resending the mute button? This should have been done automatically. If my servants have failed to do so, report their insolence at once.')
     await mute_button()
+
+# stupid ass deez command
+@client.command(name='deez', aliases=['dez', 'deeznuts','deeznutz'], help='Why are you asking about this? What would a !deez command even do?')
+async def deez(ctx):
+    deez_response = random.choice(phrases["deez_responses"])
+    await ctx.send(deez_response)
+
+@commands.Cog.listener()
+async def on_message(self, message):
+    # prevent bot from responding to its own messages
+    if message.author == self.bot.user:
+        return
+    # Check if the message is a DM. If it is a suggestion, post it in the suggestion channel. If it is a confession, post it in the confession channel
+    if isinstance(message.channel, discord.DMChannel):
+        if message.content.startswith('!suggestion'):
+            await self.suggestion_box(message)
+        elif message.content.startswith('!confession'):
+            await self.confession_box(message)
 
 # run bot
 client.run(DISCORD_TOKEN)
