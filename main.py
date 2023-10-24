@@ -17,7 +17,7 @@ ADAM_ID = os.getenv('ADAM_ID')
 
 # !!! IMPORTANT !!!
 # test vs prod switch
-test = True # set to True to run in test mode
+test = False # set to True to run in test mode
 
 # create intents
 intents = discord.Intents.default()
