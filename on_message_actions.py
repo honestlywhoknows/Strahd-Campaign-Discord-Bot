@@ -75,7 +75,6 @@ class MessageActions(commands.Cog):
             if test: print('This is me')
             return
         # Check if the message is a DM. If it is a suggestion, post it in the suggestion channel. If it is a confession, post it in the confession channel
-        #if isinstance(message.channel, discord.channel.DMChannel):
         if str(message.channel.type) == 'private':
             if test: print('Received a DM')
             if message.content.lower().startswith('?suggest'):
@@ -86,7 +85,6 @@ class MessageActions(commands.Cog):
                 await self.confession_box(message.content, int(CONFESSIONS_CHANNEL_ID))
         else:
             print('This is not a DM')
-        #await self.bot.process_commands(message)
 
 async def setup(bot):
     await bot.add_cog(MessageActions(bot))
