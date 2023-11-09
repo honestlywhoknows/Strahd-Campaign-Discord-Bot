@@ -30,6 +30,11 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.guilds = True
 intents.members = True
+intents.dm_messages = True
+intents.dm_reactions = True
+intents.guild_messages = True
+intents.guild_reactions = True
+intents.messages = True
 
 # create bot
 client = commands.Bot(command_prefix='!', intents=intents) # set command prefix and intents
@@ -45,6 +50,13 @@ async def on_ready():
     print(f'We have logged in as {client.user}') # print bot name
     await mute_button()
     client.loop.create_task(background_button_check())
+
+
+async def main():
+    await client.add_cog(MessageActions(client))
+    await client.start(DISCORD_TOKEN)
+
+
 
 # misc variables
 async def set_variables():
@@ -133,17 +145,6 @@ async def deez(ctx):
     deez_response = random.choice(phrases["deez_responses"])
     await ctx.send(deez_response)
 
-@commands.Cog.listener()
-async def on_message(self, message):
-    # prevent bot from responding to its own messages
-    if message.author == self.bot.user:
-        return
-    # Check if the message is a DM. If it is a suggestion, post it in the suggestion channel. If it is a confession, post it in the confession channel
-    if isinstance(message.channel, discord.DMChannel):
-        if message.content.startswith('!suggestion'):
-            await self.suggestion_box(message)
-        elif message.content.startswith('!confession'):
-            await self.confession_box(message)
-
 # run bot
-client.run(DISCORD_TOKEN)
+if __name__ == '__main__':
+    asyncio.run(main())

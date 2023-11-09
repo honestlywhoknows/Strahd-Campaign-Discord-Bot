@@ -12,10 +12,10 @@
         "A secretive whisper from the land, penned with trembling hands. The depths of sorrow and regret, revealed in this confession:"
     ],
     "empty_confession_responses": [
-        "Empty words hold no weight in my domain. Confess, or remain silent forever. Begin with !confession.",
-        "The shadows may hide you, but your silence will not. Speak again using !confession.",
-        "Your reticence is noted. But I demand words, not whispers. Confess using !confession.",
-        "My time is not to be wasted. If you are bold enough to bear your soul, do so beginning with !confession."
+        "Empty words hold no weight in my domain. Confess, or remain silent forever. Begin with ?confession.",
+        "The shadows may hide you, but your silence will not. Speak again using ?confession.",
+        "Your reticence is noted. But I demand words, not whispers. Confess using ?confession.",
+        "My time is not to be wasted. If you are bold enough to bear your soul, do so beginning with ?confession."
     ],
     "suggestion_phrases": [
         "I have received a most important raven, sent anonymously. It seems the people of Barovia are on the verge of revolt if this is not addressed:",
@@ -30,10 +30,10 @@
         "Someone seeks to counsel the Count from the shadows. They have sent me this unsigned demand:"
     ],
     "empty_suggestion_responses": [
-        "It is perhaps wise to keep your counsel to yourself. If you should wish to speak up, begin again with !suggestion.",
-        "I am not in the habit of taking advice from the shadows. If you wish to speak, do so with !suggestion.",
-        "You dare to waste my time with empty words? If you have a suggestion, speak it with !suggestion.",
-        "Are you going to speak, or have you lost your nerve? If you have something to say, speak it with !suggestion."
+        "It is perhaps wise to keep your counsel to yourself. If you should wish to speak up, begin again with ?suggestion.",
+        "I am not in the habit of taking advice from the shadows. If you wish to speak, do so with ?suggestion.",
+        "You dare to waste my time with empty words? If you have a suggestion, speak it with ?suggestion.",
+        "Are you going to speak, or have you lost your nerve? If you have something to say, speak it with ?suggestion."
     ],
     "nat_1_phrases": [
         "The darkness of Barovia claims another victim. Pity.",

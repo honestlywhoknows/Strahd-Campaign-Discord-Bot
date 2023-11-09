@@ -23,6 +23,7 @@ class HelpCommand(commands.DefaultHelpCommand):
                 if not command.hidden and command.enabled:
                     await self.context.send(command.name)
             await self.context.send('Type !help <command> if you can\'t figure out for yourself what a command does.')
+            await self.context.send('You may also send me a direct message with your ?suggestions or ?confessions. My servants will forward them along.')
 
     async def send_command_help(self, command):
         if command.name == 'help':
