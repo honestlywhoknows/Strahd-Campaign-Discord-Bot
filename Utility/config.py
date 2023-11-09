@@ -15,7 +15,7 @@ class Config:
         self.norgalad_id = os.getenv('NORGALAD_ID')
         self.pearl_id = os.getenv('PEARL_ID')
         self.adam_id = os.getenv('ADAM_ID')
-        self.test_mode = True
+        self.test_mode = False
         self.mute_time = 20 if self.test_mode else 180
         self.muted_user_id = self.adam_id if self.test_mode else self.norgalad_id
         self.phrases = phrases

@@ -59,7 +59,6 @@ async def main():
 # misc variables
 async def set_variables():
     bot.guild = bot.get_guild(int(bot.config.discord_guild))
-    #bot.bot_channel = discord.utils.get(bot.guild.text_channels, name='bot-commands')
     bot.bot_channel = bot.get_channel(int(bot.config.bot_channel_id))
     bot.in_game_memes_channel = bot.get_channel(int(bot.config.in_game_memes_channel_id))
     logger.info(f'Muted user: {config.muted_user_id}')
