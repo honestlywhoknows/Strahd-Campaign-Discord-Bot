@@ -1,6 +1,6 @@
 import errno
 import os
-from logger import logger
+from Utility.logger import logger
 
 class Error(Exception):
     pass

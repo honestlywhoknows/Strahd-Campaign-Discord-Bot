@@ -1,5 +1,8 @@
 import logging
 from logging.handlers import RotatingFileHandler
+from Utility.config import Config
+
+config = Config()
 
 def setup_logger(test):
     # Create a logger with the lowest level; debug messages will be logged here
@@ -28,4 +31,4 @@ def setup_logger(test):
     return logger
 
 # Initialize the logger
-logger = setup_logger()
+logger = setup_logger(config.is_test_mode())

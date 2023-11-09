@@ -4,14 +4,11 @@ import random
 import json
 from dotenv import load_dotenv
 import os
-from config import Config
-from logger import logger
+from Utility.config import Config
+from Utility.logger import logger
 
 config = Config()
 
-load_dotenv()
-SUGGESTIONS_CHANNEL_ID = int(os.getenv('SUGGESTIONS_CHANNEL_ID'))
-CONFESSIONS_CHANNEL_ID = int(os.getenv('CONFESSIONS_CHANNEL_ID'))
 test = True
 
 class MessageActions(commands.Cog):
@@ -67,30 +64,6 @@ class MessageActions(commands.Cog):
         await target_channel.send(f'{intro}\n > _{confessioncontent}_')
         # send the confession formatted as a quote to the confession channel
         logger.debug('Sending confession as quote to channel')
-
-
-    @commands.Cog.listener()
-    async def on_message(self, message: discord.Message):
-        print(f'Message: {message.content}, Channel Type: {str(message.channel.type)}')
-        logger.debug('I see a message')
-        # prevent bot from responding to its own messages
-        print (message.author)
-        if str(message.author) == ('StrahdBotZarovich#0494'):
-            logger.debug('This is me')
-            return
-        # Check if the message is a DM. If it is a suggestion, post it in the suggestion channel. If it is a confession, post it in the confession channel
-        #if isinstance(message.channel, discord.channel.DMChannel):
-        if str(message.channel.type) == 'private':
-            logger.debug('Received a DM')
-            if message.content.lower().startswith('?suggest'):
-                logger.debug('This is a suggestion')
-                await self.suggestion_box(message.content, int(SUGGESTIONS_CHANNEL_ID))
-            elif message.content.lower().startswith('?confess'):
-                logger.debug('This is a confession')
-                await self.confession_box(message.content, int(CONFESSIONS_CHANNEL_ID))
-        else:
-            print('This is not a DM')
-        #await self.bot.process_commands(message)
 
 async def setup(bot):
     await bot.add_cog(MessageActions(bot))
