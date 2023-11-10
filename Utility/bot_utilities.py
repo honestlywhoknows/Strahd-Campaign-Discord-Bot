@@ -33,7 +33,7 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
                 title += word + ' '
         else:
             title = bug
-        await self.send_bug_report(self, title, bug)
+        await self.send_bug_report(title, bug)
         await ctx.send('Your report has been filed into the Castle\'s records.')
 
 
