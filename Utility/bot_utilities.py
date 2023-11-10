@@ -5,6 +5,7 @@ from Utility.logger import logger
 import requests # for http requests
 from Utility.config import Config # for config
 from Utility.errors import handle_error # for error handling
+import aiohttp # for async http requests
 
 config = Config()
 
@@ -18,8 +19,14 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
         url = f'https://api.github.com/repos/{config.github_repo_owner}/{config.github_repo_name}/issues'
         headers = {'Authorization': f'token {config.github_token}'}
         data = {'title': f'Discord Bug Report - {title} . . .', 'body': bug}
-        response = requests.post(url, headers=headers, data=data)
-        logger.info(f'BUGREPORT: Sent bug report to github issues. Response: {response}')
+        async with aiohttp.ClientSession() as session:
+            async with session.post(url, headers=headers, json=data) as response:
+                response_text = await response.text()
+                logger.info(f'BUGREPORT: Sent bug report to GitHub issues. Response: {response.status}') 
+                logger.debug(response_text)
+                return response.status, response_text
+        #response = requests.post(url, headers=headers, json=data)
+        #logger.info(f'BUGREPORT: Sent bug report to github issues. Response: {response}')
 
     # bug report command
     @commands.command(name='bug', help='Use !bug to report any disorder in my domain. I will deal with it accordingly.')
