@@ -22,7 +22,7 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
         async with aiohttp.ClientSession() as session:
             async with session.post(url, headers=headers, json=data) as response:
                 response_text = await response.text()
-                logger.info(f'BUGREPORT: Sent bug report to GitHub issues. Response: {response.status}') 
+                logger.info(f'BUGREPORT: Sent bug report to GitHub issues. Response: {response.status}')
                 logger.debug(response_text)
                 return response.status, response_text
         #response = requests.post(url, headers=headers, json=data)
@@ -30,17 +30,12 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
 
     # bug report command
     @commands.command(name='bug', help='Use !bug to report any disorder in my domain. I will deal with it accordingly.')
-    async def bug(self, ctx, bug: str):
+    async def bug(self, ctx, *, bug: str):
         logger.info(f'BUGREPORT: User {ctx.author} has reported a bug: {bug}')
         spaces = bug.count(' ')
-        title = ''
-        if spaces > 5:
-            title_array = bug.split(' ')[5]
-            for word in title_array:
-                title += word + ' '
-        else:
-            title = bug
-        response = await self.send_bug_report(title, bug, ctx.author)
+        words = bug.split(' ')
+        title = ''.join(words[:5]) if len(words) > 5 else bug
+        response = await self.send_bug_report(title, bug, str(ctx.author))
         if response[0] == 201 or response[0] == 200:
             await ctx.send("Your report has been filed into the Castle's records.")
         else:

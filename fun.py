@@ -44,7 +44,7 @@ class FunCog(commands.Cog, name="Fun"):
             await interaction.response.send_message('Member not found in this server.', ephemeral=True) # send message stating member was not found in this server
 
     # manually resend mute button
-    @commands.command(name='resend', help='The !resend command resends the mute button manually. Obviously.')
+    @commands.command(name='resend', help='The !resend command resends the mute button to the Dungeon Master manually. Obviously.')
     async def resend_mute_button(self, ctx):
         await self.bot.bot_channel.send('Why are you manually resending the mute button? This should have been done automatically. If my servants have failed to do so, report their insolence at once.')
         await self.mute_button()
