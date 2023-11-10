@@ -47,12 +47,13 @@ async def on_ready():
         await log_test_info()
     await validate()
     logger.info(f'We have logged in as {bot.user}')
+    await bot.change_presence(activity=discord.Game(name="lording over my domain")) # set bot status
+    bot_channel = bot.get_channel(int(config.bot_channel_id))
+    await bot_channel.send('Fear not, the Count has returned to Castle Ravenloft. I trust you have not been causing trouble in my absence.')
     await fun.mute_button()
     bot.loop.create_task(BackgroundCog.background_button_check(bot))
 
 async def main():
-    # make sure to load config extension first
-    #await bot.load_extension('Utility.config')
     await bot.add_cog(MessageActions(bot)) # add message actions cog
     await bot.add_cog(FunCog(bot)) # add fun cog
     await bot.add_cog(BackgroundCog(bot)) # add background cog
