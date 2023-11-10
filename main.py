@@ -8,6 +8,7 @@ from on_message_actions import MessageActions # for on message actions
 from Utility.logger import setup_logger # for logging
 from fun import FunCog # for fun cog
 from background import BackgroundCog
+from Utility.bot_utilities import BotUtilityCog
 import tracemalloc
 
 # start memory tracing
@@ -57,6 +58,7 @@ async def main():
     await bot.add_cog(MessageActions(bot)) # add message actions cog
     await bot.add_cog(FunCog(bot)) # add fun cog
     await bot.add_cog(BackgroundCog(bot)) # add background cog
+    await bot.add_cog(BotUtilityCog(bot)) # add bot utility cog
     await bot.start(config.discord_token)
 
 # misc variables
