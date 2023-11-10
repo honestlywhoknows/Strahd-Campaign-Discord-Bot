@@ -15,10 +15,10 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
         self._last_member = None
 
     # send bug report to github issues
-    async def send_bug_report(self,title: str, bug: str):
+    async def send_bug_report(self,title: str, bug: str, user: str):
         url = f'https://api.github.com/repos/{config.github_repo_owner}/{config.github_repo_name}/issues'
         headers = {'Authorization': f'token {config.github_token}'}
-        data = {'title': f'Discord Bug Report - {title} . . .', 'body': bug}
+        data = {'title': f'Discord Bug Report - {user} {title} . . .', 'body': bug}
         async with aiohttp.ClientSession() as session:
             async with session.post(url, headers=headers, json=data) as response:
                 response_text = await response.text()
@@ -40,8 +40,11 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
                 title += word + ' '
         else:
             title = bug
-        await self.send_bug_report(title, bug)
-        await ctx.send("Your report has been filed into the Castle's records.")
+        response = await self.send_bug_report(title, bug, ctx.author)
+        if response[0] == 201 or response[0] == 200:
+            await ctx.send("Your report has been filed into the Castle's records.")
+        else:
+            await ctx.send("Your report could not be filed into the Castle's records. Please alert your Dungeon Master.")
 
 
     # maintenance command
@@ -51,6 +54,6 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
             bot_channel = self.bot.get_channel(int(config.bot_channel_id))
             await bot_channel.send('I have a pressing matter to attend to. I shall take my leave for now.')
             await self.bot.change_presence(activity=discord.Game(name="travelling the lands of Barovia"))
-            await self.bot.logout()
+            await self.bot.close()
         else:
             await ctx.send('You think you are worthy of dismissing the Lord of Barovia? Begone.')
