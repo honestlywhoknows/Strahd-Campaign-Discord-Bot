@@ -14,7 +14,7 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
         self._last_member = None
 
     # send bug report to github issues
-    def send_bug_report(self,title: str, bug: str):
+    async def send_bug_report(self,title: str, bug: str):
         url = f'https://api.github.com/repos/{config.github_repo_owner}/{config.github_repo_name}/issues'
         headers = {'Authorization': f'token {config.github_token}'}
         data = {'title': f'Discord Bug Report - {title} . . .', 'body': bug}
