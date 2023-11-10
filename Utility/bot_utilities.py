@@ -23,7 +23,7 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
 
     # bug report command
     @commands.command(name='bug', help='Use !bug to report any disorder in my domain. I will deal with it accordingly.')
-    async def bug(self, ctx, *, bug: str):
+    async def bug(self, ctx, bug: str):
         logger.info(f'BUGREPORT: User {ctx.author} has reported a bug: {bug}')
         spaces = bug.count(' ')
         title = ''
@@ -34,6 +34,7 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
         else:
             title = bug
         await self.send_bug_report(self, title, bug)
+        await ctx.send('Your report has been filed into the Castle\'s records.')
 
 
     # maintenance command
