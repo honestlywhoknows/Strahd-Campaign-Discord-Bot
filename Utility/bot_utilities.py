@@ -34,7 +34,7 @@ class BotUtilityCog(commands.Cog, name = "BotUtility"):
         else:
             title = bug
         await self.send_bug_report(title, bug)
-        await ctx.send('Your report has been filed into the Castle\'s records.')
+        await ctx.send("Your report has been filed into the Castle's records.")
 
 
     # maintenance command
