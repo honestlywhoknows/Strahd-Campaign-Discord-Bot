@@ -37,13 +37,15 @@ class Config:
                 'suggestion_box': os.getenv('PROD_SUGGESTION_CHANNEL_ID'),
                 'confession_box': os.getenv('PROD_CONFESSION_CHANNEL_ID'),
                 'bot_commands': os.getenv('PROD_BOT_COMMANDS_CHANNEL_ID'),
-                'in_game_memes': os.getenv('PROD_IN_GAME_MEMES_CHANNEL_ID')
+                'in_game_memes': os.getenv('PROD_IN_GAME_MEMES_CHANNEL_ID'),
+                'bot_playground': os.getenv('BOT_PLAYGROUND_ID')
             },
             'test': {
                 'suggestion_box': os.getenv('TEST_SUGGESTION_CHANNEL_ID'),
                 'confession_box': os.getenv('TEST_CONFESSION_CHANNEL_ID'),
                 'bot_commands': os.getenv('TEST_BOT_COMMANDS_CHANNEL_ID'),
-                'in_game_memes': os.getenv('TEST_IN_GAME_MEMES_CHANNEL_ID')
+                'in_game_memes': os.getenv('TEST_IN_GAME_MEMES_CHANNEL_ID'),
+                'bot_playground': os.getenv('TEST_BOT_COMMANDS_CHANNEL_ID')
             }
         }
         return True
@@ -57,6 +59,7 @@ class Config:
         self.confession_channel_id = self.get_channel_id('confession_box')
         self.bot_channel_id = self.get_channel_id('bot_commands')
         self.in_game_memes_channel_id = self.get_channel_id('in_game_memes')
+        self.bot_playground_channel_id = self.get_channel_id('bot_playground')
     
     def validate(self):
         """Validates the necessary configurations."""

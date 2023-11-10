@@ -9,7 +9,7 @@ from Utility.logger import logger
 
 config = Config()
 
-test = True
+test = config.is_test_mode()
 
 class MessageActions(commands.Cog):
     def __init__(self, bot):
@@ -25,6 +25,7 @@ class MessageActions(commands.Cog):
         # Send the suggestion to a specific channel
         target_channel = self.bot.get_channel(channel)
         suggestioncontent = suggestion.replace('?suggest ', '').replace('?Suggest ', '').replace('?SUGGEST ', '').replace('?sug ', '').replace('?Sug ', '').replace('?SUG ', '').replace('?suggestion ', '').replace('?Suggestion ', '').replace('?SUGGESTION ', '').replace('?suggestion ', '').replace('?Suggestion ', '').replace('?SUGGESTION ', '')
+        suggestioncontent = suggestioncontent.replace('?test-suggest ','').replace('?Test-suggest ','').replace('?TEST-SUGGEST ','').replace('?test-sug ','').replace('?Test-sug ','').replace('?TEST-SUG ','').replace('?test-suggestion ','').replace('?Test-suggestion ','').replace('?TEST-SUGGESTION ','').replace('?test-suggestion ','').replace('?Test-suggestion ','').replace('?TEST-SUGGESTION ','')
         await target_channel.send(f'{intro}\n > _{suggestioncontent}_')
 
     async def confession_box(self, confession, channel, help='If you are bold enough to bear your sins anonymously, send it directly to my chambers with the command !confession.'):
@@ -61,6 +62,7 @@ class MessageActions(commands.Cog):
             print("The channel ID is not an integer.")
         logger.debug('Sending confession to channel')
         confessioncontent = confession.replace('?confess ', '').replace('?Confess ', '').replace('?CONFESS ', '').replace('?conf ', '').replace('?Conf ', '').replace('?CONF ', '').replace('?confession ', '').replace('?Confession ', '').replace('?CONFESSION ', '').replace('?confession ', '').replace('?Confession ', '').replace('?CONFESSION ', '')
+        confessioncontent = confessioncontent.replace('?test-confess ','').replace('?Test-confess ','').replace('?TEST-CONFESS ','').replace('?test-conf ','').replace('?Test-conf ','').replace('?TEST-CONF ','').replace('?test-confession ','').replace('?Test-confession ','').replace('?TEST-CONFESSION ','').replace('?test-confession ','').replace('?Test-confession ','').replace('?TEST-CONFESS ','')
         await target_channel.send(f'{intro}\n > _{confessioncontent}_')
         # send the confession formatted as a quote to the confession channel
         logger.debug('Sending confession as quote to channel')

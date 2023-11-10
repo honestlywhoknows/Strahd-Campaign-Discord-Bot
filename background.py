@@ -44,5 +44,11 @@ class BackgroundCog(commands.Cog, name="Background"):
             elif message.content.lower().startswith('?confess'):
                 logger.debug('This is a confession')
                 await MessageActions.confession_box(self, message.content, int(config.confession_channel_id))
+            elif message.content.lower().startswith('?test-suggest'):
+                logger.debug('This is a test suggestion')
+                await MessageActions.suggestion_box(self, message.content, int(config.bot_playground_channel_id))
+            elif message.content.lower().startswith('?test-confess'):
+                logger.debug('This is a test confession')
+                await MessageActions.confession_box(self, message.content, int(config.bot_playground_channel_id))
         else:
             logger.debug('This is not a DM')
