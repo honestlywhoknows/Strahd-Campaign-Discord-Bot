@@ -1,10 +1,10 @@
 import discord # for discord api
 from discord.ext import commands # for bot commands
+from Utility.config import Config # for config
 import asyncio # for sleep
 from Utility.help import HelpCommand # for help command
 from Utility.errors import handle_error # for error handling
 from on_message_actions import MessageActions # for on message actions
-from Utility.config import Config # for config
 from Utility.logger import setup_logger # for logging
 from fun import FunCog # for fun cog
 from background import BackgroundCog
@@ -40,8 +40,8 @@ fun = FunCog(bot)
 # when bot is ready
 @bot.event
 async def on_ready():  
-    bot.config = Config()  # Attach config to bot instance 
-    logger.info(f"Bot is running in {'test' if bot.config.is_test_mode() else 'production'} mode.")
+    bot.config = config  # Attach config to bot instance 
+    logger.info(f"Bot is running in {'test' if config.is_test_mode() else 'production'} mode.")
     await set_variables()
     if test:
         await log_test_info()
@@ -51,6 +51,8 @@ async def on_ready():
     bot.loop.create_task(BackgroundCog.background_button_check(bot))
 
 async def main():
+    # make sure to load config extension first
+    #await bot.load_extension('Utility.config')
     await bot.add_cog(MessageActions(bot)) # add message actions cog
     await bot.add_cog(FunCog(bot)) # add fun cog
     await bot.add_cog(BackgroundCog(bot)) # add background cog
@@ -58,9 +60,9 @@ async def main():
 
 # misc variables
 async def set_variables():
-    bot.guild = bot.get_guild(int(bot.config.discord_guild))
-    bot.bot_channel = bot.get_channel(int(bot.config.bot_channel_id))
-    bot.in_game_memes_channel = bot.get_channel(int(bot.config.in_game_memes_channel_id))
+    bot.guild = bot.get_guild(int(config.discord_guild))
+    bot.bot_channel = bot.get_channel(int(config.bot_channel_id))
+    bot.in_game_memes_channel = bot.get_channel(int(config.in_game_memes_channel_id))
     logger.info(f'Muted user: {config.muted_user_id}')
     logger.debug(f'Guild: {bot.guild}')
     logger.debug(config.discord_guild)

@@ -40,7 +40,7 @@ class BackgroundCog(commands.Cog, name="Background"):
             logger.info('Received a DM')
             if message.content.lower().startswith('?suggest'):
                 logger.debug('This is a suggestion')
-                await self.suggestion_box(message.content, int(config.suggestions_channel_id))
+                await MessageActions.suggestion_box(self, message.content, int(config.suggestion_channel_id))
             elif message.content.lower().startswith('?confess'):
                 logger.debug('This is a confession')
                 await MessageActions.confession_box(self, message.content, int(config.confession_channel_id))

@@ -46,7 +46,7 @@ class Config:
         return True
 
     def get_channel_id(self, name):
-        mode = 'test' if self.is_test_mode else 'production'
+        mode = 'test' if self.is_test_mode() else 'production'
         return self.channels[mode].get(name)
     
     def set_channels(self):
