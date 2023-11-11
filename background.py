@@ -5,6 +5,7 @@ from Utility.logger import logger
 from fun import FunCog
 from Utility.config import Config
 from on_message_actions import MessageActions
+from strahd_gpt import StrahdAICog
 
 config = Config()
 
@@ -50,5 +51,9 @@ class BackgroundCog(commands.Cog, name="Background"):
             elif message.content.lower().startswith('?test-confess'):
                 logger.debug('This is a test confession')
                 await MessageActions.confession_box(self, message.content, int(config.bot_playground_channel_id))
+            else:
+                strahd_response = await self.get_strahd_response(message.content)
+                logger.debug('GPT DEBUG: Strahd response: ' + strahd_response)
+                await message.channel.send(strahd_response)
         else:
             logger.debug('This is not a DM')
