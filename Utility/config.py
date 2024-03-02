@@ -19,7 +19,7 @@ class Config:
         self.github_repo_name = os.getenv('GITHUB_REPO_NAME')
         self.github_repo_owner = os.getenv('GITHUB_REPO_OWNER')
         self.open_ai_key = os.getenv('OPEN_AI_API_KEY')
-        self.test_mode = False
+        self.test_mode = True
         self.mute_time = 20 if self.test_mode else 180
         self.muted_user_id = self.adam_id if self.test_mode else self.norgalad_id
         self.phrases = phrases

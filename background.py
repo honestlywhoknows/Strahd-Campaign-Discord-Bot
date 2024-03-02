@@ -52,8 +52,8 @@ class BackgroundCog(commands.Cog, name="Background"):
                 logger.debug('This is a test confession')
                 await MessageActions.confession_box(self, message.content, int(config.bot_playground_channel_id))
             else:
-                strahd_response = await self.get_strahd_response(message.content)
-                logger.debug('GPT DEBUG: Strahd response: ' + strahd_response)
+                strahd_response = await StrahdAICog.get_strahd_response(self,message.content)
+                logger.debug('GPT DEBUG: Strahd response: ' + str(strahd_response))
                 await message.channel.send(strahd_response)
         else:
             logger.debug('This is not a DM')
